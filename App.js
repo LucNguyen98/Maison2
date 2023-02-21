@@ -33,13 +33,9 @@ import CodeFieldCustom from './src/components/CodeFieldCustom';
 import DropDownList from './src/components/DropDownList';
 
 const data = [
-  {key: '1', label: 'Mobiles', value: 'Mobiles'},
-  {key: '2', label: 'Appliances', value: 'Appliances'},
-  {key: '3', label: 'Cameras', value: 'Cameras'},
-  {key: '4', label: 'Computers', value: 'Computers'},
-  {key: '5', label: 'Vegetables', value: 'Vegetables'},
-  {key: '6', label: 'Diary Products', value: 'Diary'},
-  {key: '7', label: 'Drinks', value: 'Drinks'},
+  {key: '1', label: 'Female', value: 'Female'},
+  {key: '2', label: 'Male', value: 'Male'},
+  {key: '3', label: 'Other', value: 'Other'},
 ];
 
 const App = () => {
@@ -63,17 +59,17 @@ const App = () => {
         style={backgroundStyle}>
         <View style={{margin: 16, flex: 1}}>
           <DropDownList
-            placeholder={'search'}
+            label={'Gender'}
+            placeholder={'Gender'}
             items={data}
             onPress={() => setVisible(!isVisible)}
             visible={isVisible}
+            // icon={birthday}
             onChangeItem={item => {
               setVisible(false);
               setItem(item);
             }}
             defaultValue={item?.value}
-            // containerStyle={styles.dropdownContainer}
-            // style={styles.dropDown}
           />
           <ButtonCustom
             title={'APPLY FILTERS'}
