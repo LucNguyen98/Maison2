@@ -26,7 +26,7 @@ import React, {useEffect, useRef, useState} from 'react';
 // import {connect} from 'react-redux';
 // import {bindActionCreators} from 'redux';
 // import {getIsFirstDown} from 'selectors/auth';
-// import I18n from 'src/i18n';
+import I18n from 'src/i18n';
 // import {ActionObject} from 'src/Models';
 import {
   TransitionView,
@@ -61,6 +61,8 @@ import {
 } from '../../constants/colors';
 import {FONT_SIZE, FONT_FAMILY} from '../../constants/appFonts';
 import {scale} from '../../utils/responsive';
+import {useDispatch, useSelector} from 'react-redux';
+import {getIsFirstDown} from '../../redux/selectors/auth';
 
 const onboardingImages = [
   {
@@ -87,8 +89,8 @@ const onboardingImages = [
 ];
 
 const Onboarding = ({navigation}) => {
-  // const dispatch = useDispatch();
-  // const isFirstDown = useSelector(state => getIsFirstDown(state));
+  const dispatch = useDispatch();
+  const isFirstDown = useSelector(state => getIsFirstDown(state));
 
   // const analytics = FirebaseAnalyticsService.getInstance();
   // const crashlytics = CrashlyticsService.getInstance();
@@ -99,16 +101,15 @@ const Onboarding = ({navigation}) => {
   ).current;
 
   // const [title, setTitle] = useState(I18n.t('auth.register'));
-  const [title, setTitle] = useState('Create Account');
   const [loading, setLoading] = useState(false);
   const [isFirstMount, setFirstMount] = useState(false);
 
-  // useEffect(() => {
-  //   if (!isFirstMount) {
-  //     setFirstMount(true);
-  //     navigation.navigate('LoginScreen');
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (!isFirstMount) {
+      setFirstMount(true);
+      // navigation.navigate('LoginScreen');
+    }
+  }, []);
 
   // useEffect(() => {
   //   if (!isFirstDown) {
@@ -116,58 +117,58 @@ const Onboarding = ({navigation}) => {
   //   }
   // }, [isFirstDown]);
 
-  // const onPressWhiteButton = () => {
-  //   crashlytics.logCrash('WHITE_BUTTON');
-  //   try {
-  //     let actionObj = new ActionObject(
-  //       'ONBOARDING',
-  //       'WHITE_BUTTON',
-  //       'ONBOARDING',
-  //     );
-  //     analytics.logAction(actionObj);
-  //     navigation.navigate('LoginScreen');
-  //   } catch (error) {
-  //     console.log(error);
-  //     crashlytics.errorRecord(error);
-  //   }
-  // };
+  const onPressWhiteButton = () => {
+    // crashlytics.logCrash('WHITE_BUTTON');
+    try {
+      // let actionObj = new ActionObject(
+      //   'ONBOARDING',
+      //   'WHITE_BUTTON',
+      //   'ONBOARDING',
+      // );
+      // analytics.logAction(actionObj);
+      // navigation.navigate('LoginScreen');
+    } catch (error) {
+      console.log(error);
+      // crashlytics.errorRecord(error);
+    }
+  };
 
-  // const skipHandler = () => {
-  //   crashlytics.logCrash('SKIP_BUTTON');
-  //   setLoading(true);
-  //   firebase
-  //     .auth()
-  //     .signInAnonymously()
-  //     .then(async () => {
-  //       const idTokenResult = await firebase
-  //         .auth()
-  //         .currentUser.getIdTokenResult(true);
-  //       dispatch(
-  //         getConfirmOTPSuccess({
-  //           firebaseResponse: {
-  //             token: idTokenResult.token,
-  //             expirationTime: idTokenResult.expirationTime,
-  //           },
-  //           memberCode: 'Maison_prod20210519001',
-  //           phoneNumber: '0283936942',
-  //           type: 'login',
-  //         }),
-  //       );
+  const skipHandler = () => {
+    // crashlytics.logCrash('SKIP_BUTTON');
+    setLoading(true);
+    // firebase
+    //   .auth()
+    //   .signInAnonymously()
+    //   .then(async () => {
+    //     const idTokenResult = await firebase
+    //       .auth()
+    //       .currentUser.getIdTokenResult(true);
+    //     dispatch(
+    //       getConfirmOTPSuccess({
+    //         firebaseResponse: {
+    //           token: idTokenResult.token,
+    //           expirationTime: idTokenResult.expirationTime,
+    //         },
+    //         memberCode: 'Maison_prod20210519001',
+    //         phoneNumber: '0283936942',
+    //         type: 'login',
+    //       }),
+    //     );
 
-  //       dispatch(
-  //         getMemberViewPointSuccess({
-  //           memberLoyaltyInfo: {},
-  //           avatar: null,
-  //           referralCode: null,
-  //         }),
-  //       );
-  //     })
-  //     .catch(error => {
-  //       setLoading(false);
-  //       dispatch(getShowAlertError(handleErrorMessage({}, 'Network Error')));
-  //       console.log(error);
-  //     });
-  // };
+    //     dispatch(
+    //       getMemberViewPointSuccess({
+    //         memberLoyaltyInfo: {},
+    //         avatar: null,
+    //         referralCode: null,
+    //       }),
+    //     );
+    //   })
+    //   .catch(error => {
+    //     setLoading(false);
+    //     dispatch(getShowAlertError(handleErrorMessage({}, 'Network Error')));
+    //     console.log(error);
+    //   });
+  };
 
   const renderPagination = () =>
     onboardingImages.map((item, i) => {
@@ -241,11 +242,11 @@ const Onboarding = ({navigation}) => {
         <View style={styles.bottom}>
           <View style={styles.pagination}>{renderPagination()}</View>
           <ButtonCustom
-            title={title}
+            title={I18n.t('auth.register')}
             height={scale(48)}
             isUppercase={false}
             titleStyle={styles.textButton}
-            // onPress={onPressWhiteButton}
+            onPress={onPressWhiteButton}
           />
           <TouchableOpacity style={styles.skipButton}>
             <Text style={styles.textSkip}>Maybe Later</Text>

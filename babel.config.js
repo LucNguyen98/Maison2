@@ -1,4 +1,35 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
-  plugins: ['react-native-reanimated/plugin'],
+  plugins: [
+    ['@babel/plugin-transform-flow-strip-types'],
+    ['@babel/plugin-proposal-decorators', {legacy: true}],
+    ['@babel/plugin-proposal-class-properties', {loose: true}],
+    ['@babel/plugin-transform-spread', {loose: true}],
+    ['react-native-reanimated/plugin'],
+    [
+      'module-resolver',
+      {
+        root: ['./'],
+        alias: {
+          components: './src/components/',
+          utils: './src/utils/',
+          scenes: './src/scenes/',
+          constants: './src/constants/',
+          assets: './src/assets/',
+          actions: './src/redux/actions/',
+          actionsType: './src/redux/actionsType',
+          saga: './src/redux/saga/',
+          reducers: './src/redux/reducers/',
+          selectors: './src/redux/selectors/',
+          colors: './src/constants/colors/',
+          services: './src/services/',
+          configs: './src/configs/',
+          helpers: './src/helpers/',
+          parses: './src/redux/parses/',
+          model: './src/model/',
+          global: './src/global',
+        },
+      },
+    ],
+  ],
 };
