@@ -37,6 +37,7 @@ export const FONT_FAMILY = {
   REGULAR_ITALIC: `${DEFAULT_PREFIX_FONT_FAMILY}-RegularItalic`,
   MEDIUM: `${DEFAULT_PREFIX_FONT_FAMILY}-Medium`,
   MEDIUM_ITALIC: `${DEFAULT_PREFIX_FONT_FAMILY}-MediumItalic`,
+  SEMI_BOLD: `${DEFAULT_PREFIX_FONT_FAMILY}-SemiBold`,
 };
 
 export default {

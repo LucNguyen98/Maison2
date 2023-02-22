@@ -39,3 +39,9 @@ export {default as reward_banner} from './reward_banner.png';
 export {default as policy_banner} from './banner-policy.png';
 export {default as location} from './location.png';
 export {default as dropIcon} from './dropdown.png';
+
+// new images
+
+export {default as onboading1_new} from './onboading1_new.png';
+export {default as onboading2_new} from './onboarding2_new.png';
+export {default as onboading3_new} from './onboarding3_new.png';
