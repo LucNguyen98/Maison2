@@ -31,6 +31,7 @@ import {
 import InputPhoneNumber from './src/components/InputPhoneNumber';
 import CodeFieldCustom from './src/components/CodeFieldCustom';
 import DropDownList from './src/components/DropDownList';
+import ModalLoading from './src/components/ModalLoading';
 
 const data = [
   {key: '1', label: 'Female', value: 'Female'},
@@ -194,6 +195,7 @@ const App = () => {
           alert('123');
         }}
       />
+      <ModalLoading loading={false} />
     </SafeAreaView>
   );
 };
