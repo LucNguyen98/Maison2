@@ -73,3 +73,4 @@ export {default as MaisonIcon} from './maison_icon.png';
 
 //New icon
 export {default as FlagVnIcon} from './flag_vn.svg';
+export {default as ArrowLeft} from './arrow_left.svg';

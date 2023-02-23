@@ -84,7 +84,7 @@ const InputPhoneNumber = ({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
   },
   title: {
     color: COLOR_TEXT_PRIMARY,

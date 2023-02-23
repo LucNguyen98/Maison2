@@ -10,3 +10,6 @@ export {default as DropDownList} from './DropDownList';
 export {default as TransitionView} from './TransitionView';
 export {default as Indicator} from './Indicator';
 export {default as BallIndicator} from './BallIndicator';
+export {default as LogoApp} from './LogoApp';
+export {default as DismissKeyboardView} from './HOC/withDismissKeyboard';
+export {default as withLoading} from './HOC/withLoading';
